@@ -7,7 +7,7 @@ public class RegisterServlet extends javax.servlet.http.HttpServlet {
         String password = request.getParameter("pwd");
         String name= request.getParameter("name");
         String email = request.getParameter("email");
-        User newUser = new User.UserBuilder().setName(name).setUserName(userName).setEmail(email).setPassword(password).build();
+        User newUser = new User.UserBuilder().setName(name).setUserName(userName).setEmail(email).setPassword(password).setDateOfRegister().build();
 
         RegisterDAOImpl regDAO = new RegisterDAOImpl();
         regDAO.registerUser(newUser);

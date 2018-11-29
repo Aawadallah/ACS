@@ -1,9 +1,14 @@
+import java.time.LocalDate;
+import java.util.Date;
+
 public class User {
     private int ID;
     private String name;
     private String userName;
     private String password;
     private String email;
+    private String dateOffRegister;
+
 
     public int getID() {
         return ID;
@@ -45,8 +50,6 @@ public class User {
         this.email = email;
     }
 
-
-
     @Override
     public String toString() {
         return "User{" +
@@ -55,34 +58,47 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                 '}';
+                ", dateOfRegister='" + dateOffRegister + '\'' +
+                '}';
+    }
+
+    public String getDate() {
+        return dateOffRegister;
+    }
+
+    public void setDate(String date) {
+        this.dateOffRegister = date;
     }
 
     public static class UserBuilder {
         private final User user = new User();
         public UserBuilder setID(int id) {
-            user.ID=id;
+            user.setID(id);
             return this;  }
 
         public UserBuilder setName(String name) {
-            user.name=name;
+            user.setName(name);
             return this ; }
 
         public UserBuilder setUserName(String userName) {
-            user.userName = userName;
+            user.setUserName(userName);
             return this;
         }
 
         public UserBuilder setPassword(String password) {
-            user.password = password;
+            user.setPassword(password);
             return this;
         }
 
         public UserBuilder setEmail(String email) {
-            user.email = email;
+            user.setEmail(email);
             return this;
         }
-
+        public UserBuilder setDateOfRegister() {
+            String date = LocalDate.now().toString();
+            user.setDate(date);
+            return this;
+        }
 
         public User build() {
             return user;
